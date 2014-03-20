@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="{% url 'home' %}">Reporte de Citas</a></li>
+          <li class=""><a href="{% url 'add_cita' %}">Nueva Cita</a></li>
+          <li class=""><a href="{% url 'add_user' %}">Nuevo Usuario</a></li>
+        </ul>
+        <h3 class="text-muted">Proyecto</h3>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <input id="buscador" name="buscador" value="">
+            <input type="submit" value="Buscar" />
+          </form>
+          <hr>
+        	<table class="table">
+				<tr>
+					<td>Titulo</td>
+          <td>Descripcion</td>
+					<td>Fecha</td>
+				</tr>
+				{% for row_cita in cita %}
+				<tr>
+					<td>{{ row_cita.titulo }}</td>
+          <td>{{ row_cita.texto }}</td>          
+					<td>{{ row_cita.fecha}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+
+        </div>
+
+      </div>
+
+      <div class="footer">
+        <p>&copy; Proyecto 2014</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

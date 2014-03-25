@@ -1,4 +1,6 @@
 proyecto_demo
 =============
 
-Django. En version Beta, necesita mejoras
+Django. En version Beta, necesita mejoras.
+
+** unmaintained
